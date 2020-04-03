@@ -1,0 +1,10 @@
+.pokedex-bar {
+  background-color: rgba(120, 120, 120, 0.45);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  transform: translateY(-100%);
+
+  &.open {
+    transform: translateY(0);
+  }
+}
