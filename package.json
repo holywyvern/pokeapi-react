@@ -2,10 +2,12 @@
   "name": "pokeapi-react",
   "version": "0.1.0",
   "private": true,
+  "parser": "babel-eslint",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "classnames": "^2.2.6",
     "connected-react-router": "^6.8.0",
     "history": "^4.10.1",
     "i18next": "^19.3.4",
@@ -46,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-jest": "^23.8.2",

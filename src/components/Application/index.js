@@ -1,9 +1,11 @@
 import React from "react";
 import { Provider as ReduxProvider } from "react-redux";
-import { createBrowserHistory } from "history";
-import configureStore from "@/state";
+import { ConnectedRouter } from "connected-react-router";
 
-import "./i18n";
+import { createBrowserHistory } from "history";
+
+import configureStore from "@/state";
+import Router from "@/routes";
 
 const history = createBrowserHistory();
 const store = configureStore(history);
@@ -11,7 +13,9 @@ const store = configureStore(history);
 function Application() {
   return (
     <ReduxProvider store={store}>
-      <div className="page"></div>
+      <ConnectedRouter history={history}>
+        <Router />
+      </ConnectedRouter>
     </ReduxProvider>
   );
 }

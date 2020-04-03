@@ -1,9 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import Appication from "./components/Appication";
+import Appication from "./components/Application";
 
 import * as serviceWorker from "./serviceWorker";
+
+import "./config/i18n";
 
 import "./config/global-styles.scss";
 
