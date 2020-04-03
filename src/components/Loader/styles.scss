@@ -1,0 +1,11 @@
+.loader-pokeball {
+  max-width: 300px;
+  max-height: 300px;
+  animation: loader-spin 4s linear infinite;
+}
+
+@keyframes loader-spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}

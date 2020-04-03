@@ -5,7 +5,11 @@ import { ConnectedRouter } from "connected-react-router";
 import { createBrowserHistory } from "history";
 
 import configureStore from "@/state";
-import Router from "@/routes";
+import Routes from "@/routes";
+
+import ApplicationLayout from "@/layouts/ApplicationLayout";
+
+import ApplicationLoader from "@/components/ApplicationLoader";
 
 const history = createBrowserHistory();
 const store = configureStore(history);
@@ -14,7 +18,11 @@ function Application() {
   return (
     <ReduxProvider store={store}>
       <ConnectedRouter history={history}>
-        <Router />
+        <ApplicationLoader>
+          <ApplicationLayout>
+            <Routes />
+          </ApplicationLayout>
+        </ApplicationLoader>
       </ConnectedRouter>
     </ReduxProvider>
   );

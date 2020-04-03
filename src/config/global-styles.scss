@@ -1,6 +1,7 @@
 html,
 body,
 #root {
+  font-family: "Libre Franklin", sans-serif;
   margin: 0;
   padding: 0;
   position: absolute;
@@ -8,6 +9,11 @@ body,
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+#root {
+  background: linear-gradient(105deg, #ffe9ec, #ddd, #d4edf1);
+  overflow: hidden;
 }
 
 .overflow-auto {
