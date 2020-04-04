@@ -5,7 +5,13 @@
   grid-template-columns: 1fr;
   gap: 12px;
   list-style-type: none;
-  max-width: 600px;
+  max-width: 500px;
   width: 100%;
+  padding: 0 8px;
   padding-top: 12px;
+  margin: 0;
+}
+
+.species-list-wrapper-view {
+  padding: 0 8px;
 }

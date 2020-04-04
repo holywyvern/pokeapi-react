@@ -14,7 +14,7 @@
     transition: all 0.3s ease;
 
     .number {
-      min-width: 150px;
+      min-width: 100px;
     }
 
     .label,
@@ -31,7 +31,7 @@
   &.selected > button {
     cursor: pointer;
     outline: 0;
-    background: linear-gradient(105deg, #ff5d14 150px, black 151px);
+    background: linear-gradient(105deg, #ff5d14 120px, black 121px);
     color: white;
     box-shadow: 4px 4px 4px rgba(50, 50, 50, 0.3);
     transform: translateY(-4px);
@@ -43,5 +43,13 @@
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .species-list-item {
+    & > button {
+      padding: 4px 12px 6px 12px;
+    }
   }
 }

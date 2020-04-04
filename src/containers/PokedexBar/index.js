@@ -8,14 +8,14 @@ import "./styles.scss";
 
 function PokedexBar() {
   const classes = cx(
-    "pokedex-bar",
     "padding-md",
     "flex-row",
-    "vertical-center"
+    "vertical-center",
+    "pokedex-bar"
   );
   return (
     <nav className={classes}>
-      <h1 className="flex-grow padding-0 margin-0">Pokédex</h1>
+      <h1 className="title flex-grow padding-0 margin-0">Pokédex</h1>
       <LanguageButtons />
     </nav>
   );

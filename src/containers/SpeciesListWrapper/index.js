@@ -14,7 +14,7 @@ function SpeciesListWrapper({
   children,
 }) {
   return (
-    <nav className="flex-column flex-grow overflow-hidden vertical-center horizontal-center">
+    <nav className="flex-column flex-grow overflow-hidden vertical-center horizontal-center species-list-wrapper-view">
       <Pagination
         loadPage={loadPage}
         prevPage={prevPage}

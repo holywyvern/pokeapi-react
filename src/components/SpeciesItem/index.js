@@ -10,10 +10,15 @@ import { speciesSummary } from "@/utils/propTypes";
 
 import SpeciesItemDisplay from "@/containers/SpeciesItemDisplay";
 
+import wait from "@/utils/wait";
+
 function SpeciesItem({ locales, species, selected }) {
   const router = useActions(routerActions);
   const actions = useActions(speciesActions);
-  const onClick = () => router.push(`/species/${species.id}`);
+  const onClick = async () => {
+    await wait(100);
+    router.push(`/species/${species.id}`);
+  };
   return (
     <SpeciesItemDisplay
       species={species}
