@@ -2,33 +2,29 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import cx from "classnames";
-
 import { actions as localeActions } from "@/state/reducers/locales";
+import { actions as speciesActions } from "@/state/reducers/species";
 
 import useActions from "@/hooks/useActions";
 
-import Loader from "@/components/Loader";
-
-import "./styles.scss";
+import ApplicationLoaderLayout from "@/containers/ApplicationLoaderLayout";
 
 function ApplicationLoader({ children }) {
-  const actions = useActions(localeActions);
-  const { loading } = useSelector((state) => state.locales);
+  const i18n = useActions(localeActions);
+  const species = useActions(speciesActions);
+  const { loading, nextPage } = useSelector(({ species, locales }) => ({
+    loading: [species, locales].some((i) => i.loading),
+    nextPage: species.nextPage,
+  }));
   useEffect(() => {
-    actions.init();
+    i18n.init();
+    species.loadPage(nextPage);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const classes = cx("language-loader", {
-    loading,
-  });
   return (
-    <>
+    <ApplicationLoaderLayout loading={loading}>
       {children}
-      <div className={classes}>
-        <Loader />
-      </div>
-    </>
+    </ApplicationLoaderLayout>
   );
 }
 

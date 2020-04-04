@@ -2,6 +2,8 @@ import Immutable from "seamless-immutable";
 
 import i18n, { initI18n } from "@/config/i18n";
 
+import wait from "@/utils/wait";
+
 const INITIAL_STATE = Immutable({
   loading: true,
   language: "en",
@@ -59,9 +61,11 @@ export const actions = {
     return async (dispatch) => {
       try {
         dispatch(privateActions.loadStart());
+        await wait(300);
         await initI18n();
         dispatch(privateActions.loadSuccess(i18n));
       } catch (error) {
+        console.error(error);
         dispatch(privateActions.loadFailed(error));
       }
     };
@@ -70,9 +74,12 @@ export const actions = {
     return async (dispatch) => {
       try {
         dispatch(privateActions.loadStart());
+        await wait(300);
         await i18n.changeLanguage(language);
+        await wait(300);
         dispatch(privateActions.loadSuccess(i18n));
       } catch (error) {
+        console.error(error);
         dispatch(privateActions.loadFailed(error));
       }
     };

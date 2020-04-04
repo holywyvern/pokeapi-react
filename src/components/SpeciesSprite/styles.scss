@@ -1,0 +1,12 @@
+.pokedex-image-wrapper {
+  transition: all 0.3s ease;
+
+  .sprite {
+    transform: scale(2);
+    transform-origin: center;
+  }
+
+  &.moved {
+    transform: translateX(-100px);
+  }
+}
