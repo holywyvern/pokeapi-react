@@ -2,3 +2,9 @@
   padding-left: 12px;
   font-weight: bolder;
 }
+
+@media screen and (max-width: 520px) {
+  .pagination-list.pagination-list {
+    display: none;
+  }
+}

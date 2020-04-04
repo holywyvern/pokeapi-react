@@ -10,15 +10,15 @@ function Pagination({ loadPage, nextPage, prevPage, page, totalPages }) {
   const buttons = [];
   const minButtons = [];
   const maxButtons = [];
-  const min = Math.max(page - 1, 3);
-  const max = Math.min(page + 2, totalPages - 3);
-  for (let i = 0; i < 3; ++i) {
+  const min = Math.max(page - 1, 2);
+  const max = Math.min(page + 2, totalPages - 2);
+  for (let i = 0; i < 2; ++i) {
     minButtons.push(i);
   }
   for (let i = min; i < max; ++i) {
     buttons.push(i);
   }
-  for (let i = totalPages - 3; i < totalPages; ++i) {
+  for (let i = totalPages - 2; i < totalPages; ++i) {
     maxButtons.push(i);
   }
   const checkMax = buttons.length ? buttons : maxButtons;

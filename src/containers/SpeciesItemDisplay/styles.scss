@@ -53,7 +53,8 @@
 @media screen and (max-width: 1100px) {
   .species-list-item {
     & > .button {
-      padding: 12px 24px;
+      font-size: 20px;
+      padding: 12px 16px;
     }
   }
 }
@@ -62,6 +63,7 @@
   .species-list-item {
     & > .button {
       font-size: 18px;
+      padding: 12px 24px;
 
       .number {
         min-width: 80px;
