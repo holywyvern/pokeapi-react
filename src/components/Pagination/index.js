@@ -30,7 +30,7 @@ function Pagination({ loadPage, nextPage, prevPage, page, totalPages }) {
     Boolean(checkMin[checkMin.length - 1] < maxButtons[0] - 1) &&
     (buttons.length || !drawMinorDots);
   return (
-    <div className="flex-row vertical-center">
+    <nav className="flex-row vertical-center" role="menubar">
       <Button
         disabled={typeof prevPage !== "number"}
         onClick={() => loadPage(prevPage)}
@@ -43,6 +43,7 @@ function Pagination({ loadPage, nextPage, prevPage, page, totalPages }) {
           disabled={i === page}
           onClick={() => loadPage(i)}
           compact
+          role="menuitem"
         >
           {i + 1}
         </Button>
@@ -54,6 +55,7 @@ function Pagination({ loadPage, nextPage, prevPage, page, totalPages }) {
           disabled={i === page}
           onClick={() => loadPage(i)}
           compact
+          role="menuitem"
         >
           {i + 1}
         </Button>
@@ -65,6 +67,7 @@ function Pagination({ loadPage, nextPage, prevPage, page, totalPages }) {
           disabled={i === page}
           onClick={() => loadPage(i)}
           compact
+          role="menuitem"
         >
           {i + 1}
         </Button>
@@ -75,7 +78,7 @@ function Pagination({ loadPage, nextPage, prevPage, page, totalPages }) {
       >
         <Chevron direction="right" />
       </Button>
-    </div>
+    </nav>
   );
 }
 

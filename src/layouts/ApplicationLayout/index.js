@@ -26,7 +26,9 @@ function ApplicationLayout({ children }) {
         <PokedexBar open={Boolean(match)} />
         <div className="flex-grow flex-row overflow-hidden pokedex-content">
           <SpeciesSprite moved={!match} />
-          <div className="flex-grow flex-column overflow-auto">{children}</div>
+          <div className="flex-grow flex-column overflow-auto application-view-wrapper">
+            {children}
+          </div>
         </div>
       </div>
     </>

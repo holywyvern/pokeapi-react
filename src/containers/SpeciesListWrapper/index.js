@@ -22,7 +22,11 @@ function SpeciesListWrapper({
         totalPages={totalPages}
         page={page}
       />
-      <ul className="flex-column species-list-wrapper overflow-auto">
+      <ul
+        className="flex-column species-list-wrapper overflow-auto"
+        role="menu"
+        aria-expanded="true"
+      >
         {children}
       </ul>
     </nav>

@@ -1,17 +1,21 @@
 .species-list-item {
   flex: 1;
   display: flex;
+  user-select: none;
 
-  & > button {
+  & > .button {
+    text-decoration: none;
+    color: black;
     border: 0;
     flex: 1;
     display: flex;
     background: transparent;
     border-radius: 12px;
-    padding: 8px 24px 12px 24px;
+    padding: 4px 24px 8px 24px;
     align-items: center;
     font-size: 24px;
     transition: all 0.3s ease;
+    user-select: none;
 
     .number {
       min-width: 100px;
@@ -28,10 +32,10 @@
     }
   }
 
-  &.selected > button {
+  &.selected > .button {
     cursor: pointer;
     outline: 0;
-    background: linear-gradient(105deg, #ff5d14 120px, black 121px);
+    background: linear-gradient(105deg, #ff5d14 150px, black 151px);
     color: white;
     box-shadow: 4px 4px 4px rgba(50, 50, 50, 0.3);
     transform: translateY(-4px);
@@ -48,8 +52,24 @@
 
 @media screen and (max-width: 1100px) {
   .species-list-item {
-    & > button {
-      padding: 4px 12px 6px 12px;
+    & > .button {
+      padding: 12px 24px;
+    }
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .species-list-item {
+    & > .button {
+      font-size: 18px;
+
+      .number {
+        min-width: 80px;
+      }
+    }
+
+    &.selected > .button {
+      background: linear-gradient(105deg, #ff5d14 120px, black 121px);
     }
   }
 }
