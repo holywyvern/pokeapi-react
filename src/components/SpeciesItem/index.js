@@ -26,6 +26,7 @@ function SpeciesItem({ locales, species, selected }) {
 }
 
 SpeciesItem.propTypes = {
+  locales: PropTypes.any,
   species: speciesSummary,
   selected: PropTypes.bool,
 };
