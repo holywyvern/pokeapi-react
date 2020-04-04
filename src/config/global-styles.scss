@@ -20,6 +20,14 @@ body,
   overflow: auto;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.align-end {
+  align-self: flex-end;
+}
+
 .flex-grow {
   flex: 1;
 }

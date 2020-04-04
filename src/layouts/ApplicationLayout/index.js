@@ -5,7 +5,9 @@ import cx from "classnames";
 
 import { useRouteMatch } from "react-router-dom";
 
-import PokedexBar from "@/components/PokedexBar";
+import SpeciesSprite from "@/components/SpeciesSprite";
+
+import PokedexBar from "@/containers/PokedexBar";
 
 import "./styles.scss";
 
@@ -22,7 +24,12 @@ function ApplicationLayout({ children }) {
       <div className={classes} />
       <div className="flex-grow flex-column pokedex-view">
         <PokedexBar open={Boolean(match)} />
-        <div className="flex-grow overflow-auto">{children}</div>
+        <div className="flex-grow flex-row overflow-hidden pokedex-content">
+          <SpeciesSprite moved={!match} />
+          <div className="flex-grow flex-column overflow-auto application-view-wrapper">
+            {children}
+          </div>
+        </div>
       </div>
     </>
   );

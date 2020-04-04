@@ -1,19 +1,18 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import LanguageButton from "@/components/LanguageButton";
-
 import { actions as localeActions } from "@/state/reducers/locales";
 
 import useActions from "@/hooks/useActions";
 
-import "./styles.scss";
+import LanguageButtonsMenu from "@/containers/LanguageButtonsMenu";
+import LanguageButton from "@/containers/LanguageButton";
 
 function LanguageButtons() {
   const actions = useActions(localeActions);
   const { language } = useSelector((state) => state.locales);
   return (
-    <nav className="language-buttons">
+    <LanguageButtonsMenu>
       <LanguageButton
         currentLocale={language}
         onChange={actions.changeLanguage}
@@ -29,7 +28,7 @@ function LanguageButtons() {
       <LanguageButton
         currentLocale={language}
         onChange={actions.changeLanguage}
-        locale="gr"
+        locale="de"
         label="GER"
       />
       <LanguageButton
@@ -59,16 +58,16 @@ function LanguageButtons() {
       <LanguageButton
         currentLocale={language}
         onChange={actions.changeLanguage}
-        locale="zh-CHS"
+        locale="zh-Hans"
         label="CHS"
       />
       <LanguageButton
         currentLocale={language}
         onChange={actions.changeLanguage}
-        locale="zh-CHT"
+        locale="zh-Hant"
         label="CHT"
       />
-    </nav>
+    </LanguageButtonsMenu>
   );
 }
 
