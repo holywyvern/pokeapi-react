@@ -4,11 +4,11 @@ import PokeApi from "@/services/PokeApi";
 
 import wait from "@/utils/wait";
 
-const START_LOAD = "@species/START_LOAD";
-const LOAD_PAGE = "@species/LOAD_PAGE";
-const ERROR = "@species/ERROR";
-const RETRY = "@species/RETRY";
-const SELECT = "@species/SELECT";
+export const START_LOAD = "@species/START_LOAD";
+export const LOAD_PAGE = "@species/LOAD_PAGE";
+export const ERROR = "@species/ERROR";
+export const RETRY = "@species/RETRY";
+export const SELECT = "@species/SELECT";
 
 const INITIAL_STATE = Immutable({
   items: [],

@@ -2,6 +2,43 @@ import { AVAILABLE_LOCALES } from "@/config/i18n";
 
 const PAGE_SIZE = 5;
 
+function filterNames(species) {
+  return species.names
+    .filter((locale) => AVAILABLE_LOCALES.includes(locale.language.name))
+    .reduce(
+      (previous, { language, name }) => ({
+        ...previous,
+        [language.name]: name,
+      }),
+      {}
+    );
+}
+
+function getFlavorText({ flavor_text_entries: entries }) {
+  const result = {};
+  // We go counter clockwise to get the newest flavor text
+  for (let i = entries.length - 1; i >= 0; --i) {
+    const entry = entries[i];
+    const language = entry.language.name;
+    if (!result[language]) {
+      result[language] = entry.flavor_text;
+    }
+  }
+  return result;
+}
+
+function getGenera({ genera }) {
+  const result = {};
+  // We go counter clockwise to get the newest flavor text
+  for (let entry of genera) {
+    const language = entry.language.name;
+    if (!result[language]) {
+      result[language] = entry.genus;
+    }
+  }
+  return result;
+}
+
 // This is done using a cache to avoid PokeApi's traffic limits
 async function fetchJson(url) {
   const request = await fetch(url);
@@ -13,32 +50,41 @@ async function fetchJson(url) {
   return request.json();
 }
 
-async function getSpeciesImage(species) {
+async function getSpeciesDetails(species) {
   const variety = species.varieties.find((variety) => variety.is_default);
   if (!variety) {
     return null;
   }
   const data = await fetchJson(variety.pokemon.url);
-  return data.sprites.front_default;
+  const image = data.sprites.front_default;
+  const types = data.types
+    .sort((a, b) => a.slot - b.slot)
+    .map((i) => i.type.name);
+  const weight = data.weight / 10;
+  const height = data.height / 10;
+
+  return {
+    image,
+    types,
+    weight,
+    height,
+  };
 }
 
 async function getSpecies({ url }) {
   const species = await fetchJson(url);
-  const names = species.names
-    .filter((locale) => AVAILABLE_LOCALES.includes(locale.language.name))
-    .reduce(
-      (previous, { language, name }) => ({
-        ...previous,
-        [language.name]: name,
-      }),
-      {}
-    );
+  const names = filterNames(species);
+  const flavorText = getFlavorText(species);
+  const genera = getGenera(species);
   const icon = `/icons/${species.id}.png`;
+  const details = await getSpeciesDetails(species);
   return {
     id: species.id,
     icon,
     names,
-    image: await getSpeciesImage(species),
+    flavorText,
+    genera,
+    ...details,
   };
 }
 
@@ -63,5 +109,10 @@ export default {
       results: await loadSpecies(results),
       hasMore: Boolean(next),
     };
+  },
+
+  getDetails(id) {
+    const url = `https://pokeapi.co/api/v2/pokemon-species/${id}`;
+    return getSpecies({ url });
   },
 };

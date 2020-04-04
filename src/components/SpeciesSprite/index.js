@@ -7,6 +7,8 @@ import cx from "classnames";
 
 import Loader from "@/containers/Loader";
 
+import { findImage } from "./utils";
+
 import "./styles.scss";
 
 function SpeciesSprite({ moved }) {
@@ -17,8 +19,8 @@ function SpeciesSprite({ moved }) {
   );
   return (
     <div className={classes}>
-      {selectedSpecies && selectedSpecies.image ? (
-        <img className="sprite" alt="sprite" src={selectedSpecies.image} />
+      {selectedSpecies ? (
+        <img className="sprite" alt="sprite" src={findImage(selectedSpecies)} />
       ) : (
         <Loader fixed />
       )}
