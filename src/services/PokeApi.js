@@ -1,6 +1,12 @@
 import { AVAILABLE_LOCALES } from "@/config/i18n";
 
-const PAGE_SIZE = 5;
+import {
+  PAGE_SIZE,
+  OFFICIAL_ARTWORK_BASE_URL,
+  fetchJson,
+  BASE_API_URL,
+  BASE_CONTENT_URL,
+} from "./utils";
 
 function filterNames(species) {
   return species.names
@@ -39,17 +45,6 @@ function getGenera({ genera }) {
   return result;
 }
 
-// This is done using a cache to avoid PokeApi's traffic limits
-async function fetchJson(url) {
-  const request = await fetch(url);
-  if (!request.ok) {
-    const error = new Error(`Failed request ${url}`);
-    error.request = request;
-    throw error;
-  }
-  return request.json();
-}
-
 async function getSpeciesDetails(species) {
   const variety = species.varieties.find((variety) => variety.is_default);
   if (!variety) {
@@ -62,9 +57,17 @@ async function getSpeciesDetails(species) {
     .map((i) => i.type.name);
   const weight = data.weight / 10;
   const height = data.height / 10;
-
+  const images = [
+    // The API doesn't give us a link to them, however, most of them are present.
+    `${OFFICIAL_ARTWORK_BASE_URL}/${data.id}.png`,
+    `/sprites/official-artwork/${data.id}.png`,
+    data.sprites.front_default,
+    // This URL is to fix some sprites than are not properly loaded at the API yet, like Zeraora
+    `${BASE_CONTENT_URL}/sprites/pokemon/${data.id}.png`,
+  ].filter((i) => Boolean(i));
   return {
     image,
+    images,
     types,
     weight,
     height,
@@ -97,7 +100,7 @@ export default {
 
   async getSpecies(page) {
     const { next, previous, count, results } = await fetchJson(
-      `https://pokeapi.co/api/v2/pokemon-species?limit=${PAGE_SIZE}&offset=${
+      `${BASE_API_URL}/pokemon-species?limit=${PAGE_SIZE}&offset=${
         page * PAGE_SIZE
       }`
     );
@@ -112,7 +115,7 @@ export default {
   },
 
   getDetails(id) {
-    const url = `https://pokeapi.co/api/v2/pokemon-species/${id}`;
+    const url = `${BASE_API_URL}/pokemon-species/${id}`;
     return getSpecies({ url });
   },
 };
