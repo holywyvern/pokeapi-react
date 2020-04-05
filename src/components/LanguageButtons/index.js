@@ -8,9 +8,11 @@ import useActions from "@/hooks/useActions";
 import LanguageButtonsMenu from "@/containers/LanguageButtonsMenu";
 import LanguageButton from "@/containers/LanguageButton";
 
+const pageSelector = (state) => state.locales;
+
 function LanguageButtons() {
   const actions = useActions(localeActions);
-  const { language } = useSelector((state) => state.locales);
+  const { language } = useSelector(pageSelector);
   return (
     <LanguageButtonsMenu>
       <LanguageButton

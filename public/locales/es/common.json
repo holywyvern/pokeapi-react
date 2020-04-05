@@ -1,5 +1,8 @@
 {
   "type": "Tipo",
   "weight": "Peso",
-  "height": "Altura"
+  "height": "Altura",
+  "abilities": "Habilidades",
+  "hidden": "(Habilidad oculta)",
+  "pokedex": "Pokédex"
 }

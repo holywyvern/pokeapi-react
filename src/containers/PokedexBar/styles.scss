@@ -4,6 +4,14 @@
   transition: all 0.3s ease;
 }
 
+.pokédex-bar-title {
+  color: black;
+  font-size: 24px;
+  font-weight: bolder;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 640px) {
   .pokedex-bar.pokedex-bar {
     display: none;

@@ -1,49 +1,13 @@
-import { AVAILABLE_LOCALES } from "@/config/i18n";
+import { PAGE_SIZE, fetchJson, BASE_API_URL } from "./utils";
 
 import {
-  PAGE_SIZE,
-  OFFICIAL_ARTWORK_BASE_URL,
-  fetchJson,
-  BASE_API_URL,
-  BASE_CONTENT_URL,
-} from "./utils";
-
-function filterNames(species) {
-  return species.names
-    .filter((locale) => AVAILABLE_LOCALES.includes(locale.language.name))
-    .reduce(
-      (previous, { language, name }) => ({
-        ...previous,
-        [language.name]: name,
-      }),
-      {}
-    );
-}
-
-function getFlavorText({ flavor_text_entries: entries }) {
-  const result = {};
-  // We go counter clockwise to get the newest flavor text
-  for (let i = entries.length - 1; i >= 0; --i) {
-    const entry = entries[i];
-    const language = entry.language.name;
-    if (!result[language]) {
-      result[language] = entry.flavor_text;
-    }
-  }
-  return result;
-}
-
-function getGenera({ genera }) {
-  const result = {};
-  // We go counter clockwise to get the newest flavor text
-  for (let entry of genera) {
-    const language = entry.language.name;
-    if (!result[language]) {
-      result[language] = entry.genus;
-    }
-  }
-  return result;
-}
+  formatTypes,
+  formatAbilities,
+  formatFlavorText,
+  formatGenera,
+  formatImages,
+  formatNames,
+} from "./formatters";
 
 async function getSpeciesDetails(species) {
   const variety = species.varieties.find((variety) => variety.is_default);
@@ -52,33 +16,26 @@ async function getSpeciesDetails(species) {
   }
   const data = await fetchJson(variety.pokemon.url);
   const image = data.sprites.front_default;
-  const types = data.types
-    .sort((a, b) => a.slot - b.slot)
-    .map((i) => i.type.name);
+  const types = formatTypes(data);
   const weight = (data.weight / 10).toFixed(2);
   const height = (data.height / 10).toFixed(2);
-  const images = [
-    // The API doesn't give us a link to them, however, most of them are present.
-    `${OFFICIAL_ARTWORK_BASE_URL}/${data.id}.png`,
-    `${process.env.PUBLIC_URL}/sprites/official-artwork/${data.id}.png`,
-    data.sprites.front_default,
-    // This URL is to fix some sprites than are not properly loaded at the API yet, like Zeraora
-    `${BASE_CONTENT_URL}/sprites/pokemon/${data.id}.png`,
-  ].filter((i) => Boolean(i));
+  const images = formatImages(data);
+  const abilities = formatAbilities(data);
   return {
     image,
     images,
     types,
     weight,
     height,
+    abilities,
   };
 }
 
 async function getSpecies({ url }) {
   const species = await fetchJson(url);
-  const names = filterNames(species);
-  const flavorText = getFlavorText(species);
-  const genera = getGenera(species);
+  const names = formatNames(species);
+  const flavorText = formatFlavorText(species);
+  const genera = formatGenera(species);
   const icon = `${process.env.PUBLIC_URL}/icons/${species.id}.png`;
   const details = await getSpeciesDetails(species);
   return {
@@ -88,6 +45,17 @@ async function getSpecies({ url }) {
     flavorText,
     genera,
     ...details,
+  };
+}
+
+async function getAbility(url) {
+  const ability = await fetchJson(url);
+  const names = formatNames(ability);
+  const flavorText = formatFlavorText(ability);
+  return {
+    id: ability.id,
+    names,
+    flavorText,
   };
 }
 
@@ -117,5 +85,10 @@ export default {
   getDetails(id) {
     const url = `${BASE_API_URL}/pokemon-species/${id}`;
     return getSpecies({ url });
+  },
+
+  loadAbility(id) {
+    const url = `${BASE_API_URL}/ability/${id}`;
+    return getAbility(url);
   },
 };

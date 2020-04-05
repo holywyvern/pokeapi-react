@@ -5,8 +5,8 @@ import cx from "classnames";
 
 import "./styles.scss";
 
-function Loader({ fixed }) {
-  const classes = cx("loader-pokeball", { spin: !fixed });
+function Loader({ fixed, className }) {
+  const classes = cx("loader-pokeball", className, { spin: !fixed });
   return (
     <img
       className={classes}
@@ -18,6 +18,11 @@ function Loader({ fixed }) {
 
 Loader.propTypes = {
   fixed: PropTypes.bool,
+  className: PropTypes.string,
+};
+
+Loader.defaultProps = {
+  fixed: false,
 };
 
 export default Loader;

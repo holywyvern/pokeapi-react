@@ -6,6 +6,7 @@ import cx from "classnames";
 import { useRouteMatch } from "react-router-dom";
 
 import SpeciesSprite from "@/components/SpeciesSprite";
+import ScrollIndicator from "@/components/ScrollIndicator";
 
 import PokedexBar from "@/containers/PokedexBar";
 
@@ -26,9 +27,7 @@ function ApplicationLayout({ children }) {
         <PokedexBar open={Boolean(match)} />
         <div className="flex-grow flex-row overflow-hidden pokedex-content">
           <SpeciesSprite moved={!match} />
-          <div className="flex-grow flex-column overflow-auto application-view-wrapper">
-            {children}
-          </div>
+          <ScrollIndicator>{children}</ScrollIndicator>
         </div>
       </div>
     </>

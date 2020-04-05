@@ -1,4 +1,4 @@
-.species-page-grid {
+.species-info-grid {
   display: grid;
   grid-template-rows: auto 1fr;
   grid-template-areas:
@@ -73,36 +73,7 @@
   }
 }
 
-.species-details-title {
-  display: flex;
-  grid-area: title;
-  user-select: none;
-  background: linear-gradient(105deg, #ff5d14 150px, black 151px);
-  text-decoration: none;
-  color: white;
-  border: 0;
-  display: flex;
-  align-items: center;
-  transition: all 0.3s ease;
-  user-select: none;
-  font-size: 24px;
-  padding: 8px 12px;
-
-  .number {
-    min-width: 150px;
-  }
-
-  .label,
-  .number {
-    text-align: left;
-  }
-}
-
 @media screen and (max-width: 1100px) {
-  .species-details-title {
-    font-size: 18px;
-  }
-
   .flavor {
     padding: 8px;
   }
