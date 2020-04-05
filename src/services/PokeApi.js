@@ -55,8 +55,8 @@ async function getSpeciesDetails(species) {
   const types = data.types
     .sort((a, b) => a.slot - b.slot)
     .map((i) => i.type.name);
-  const weight = data.weight / 10;
-  const height = data.height / 10;
+  const weight = (data.weight / 10).toFixed(2);
+  const height = (data.height / 10).toFixed(2);
   const images = [
     // The API doesn't give us a link to them, however, most of them are present.
     `${OFFICIAL_ARTWORK_BASE_URL}/${data.id}.png`,
