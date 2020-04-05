@@ -9,6 +9,8 @@ import SpeciesItem from "@/components/SpeciesItem";
 
 import useActions from "@/hooks/useActions";
 
+const pageSelector = ({ species, locales }) => ({ ...species, locales });
+
 function SpeciesList() {
   const species = useActions(speciesActions);
   const {
@@ -19,7 +21,7 @@ function SpeciesList() {
     locales,
     page,
     totalPages,
-  } = useSelector(({ species, locales }) => ({ ...species, locales }));
+  } = useSelector(pageSelector);
   return (
     <SpeciesListWrapper
       loadPage={species.loadPage}
