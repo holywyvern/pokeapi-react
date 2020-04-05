@@ -6,6 +6,8 @@ import cx from "classnames";
 
 import { speciesSummary } from "@/utils/propTypes";
 
+import Icon from "@/containers/Icon";
+
 import "./styles.scss";
 
 function SpeciesItemDisplay({ locales, selected, species, onSelect }) {
@@ -19,15 +21,13 @@ function SpeciesItemDisplay({ locales, selected, species, onSelect }) {
         className="button"
         role="menuitem"
         type="button"
-        to={`/species/${species.id}`}
+        to={`/${species.id}`}
         tabIndex={0}
         onMouseEnter={handleHover}
         onTouchStart={handleHover}
         onFocus={handleHover}
       >
-        <div className="icon-wrapper">
-          <img src={species.icon} alt={species.icon} className="icon" />
-        </div>
+        <Icon src={species.icon} />
         <div className="number"># {String(species.id).padStart(3, "0")}</div>
         <div className="flex-grow label">{species.names[locales.language]}</div>
       </Link>

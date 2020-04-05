@@ -8,6 +8,7 @@ const INITIAL_STATE = Immutable({
   loading: true,
   language: "en",
   error: null,
+  t: (...args) => i18n.t(...args),
 });
 
 export const LOAD_START = "@locales/LOAD_START";
@@ -76,6 +77,7 @@ export const actions = {
         dispatch(privateActions.loadStart());
         await wait(300);
         await i18n.changeLanguage(language);
+        await i18n.loadNamespaces("common");
         await wait(300);
         dispatch(privateActions.loadSuccess(i18n));
       } catch (error) {

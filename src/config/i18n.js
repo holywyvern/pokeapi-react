@@ -16,8 +16,8 @@ export const AVAILABLE_LOCALES = [
   "zh-Hans",
 ];
 
-export function initI18n() {
-  return i18n
+export async function initI18n() {
+  await i18n
     .use(initReactI18next)
     .use(backend)
     .use(languageDetector)
@@ -35,6 +35,8 @@ export function initI18n() {
         useSuspense: false,
       },
     });
+  await i18n.loadNamespaces("common");
+  return i18n;
 }
 
 export default i18n;

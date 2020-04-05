@@ -2,21 +2,21 @@
   transition: all 0.3s ease;
 
   .sprite {
-    transform: scale(4);
+    width: 100%;
+    max-width: 400px;
     transform-origin: center;
+    transition: all 0.3s ease;
   }
 
   &.moved {
-    transform: translateX(-40px);
+    transform: translateX(-30px);
   }
 }
 
 @media screen and (max-width: 1100px) {
   .pokedex-image-wrapper {
     .sprite {
-      transform: scale(1);
-      width: 100%;
-      max-width: 250px;
+      max-width: 200px;
     }
 
     &.moved {

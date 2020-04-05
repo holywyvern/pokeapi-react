@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 import cx from "classnames";
 
+import SafeImage from "@/components/SafeImage";
 import Loader from "@/containers/Loader";
 
 import "./styles.scss";
@@ -17,8 +18,12 @@ function SpeciesSprite({ moved }) {
   );
   return (
     <div className={classes}>
-      {selectedSpecies && selectedSpecies.image ? (
-        <img className="sprite" alt="sprite" src={selectedSpecies.image} />
+      {selectedSpecies ? (
+        <SafeImage
+          key={selectedSpecies.id}
+          images={selectedSpecies.images}
+          className="sprite"
+        />
       ) : (
         <Loader fixed />
       )}

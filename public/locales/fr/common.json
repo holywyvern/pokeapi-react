@@ -1,1 +1,5 @@
-{}
+{
+  "type": "Type",
+  "weight": "Poids",
+  "height": "Hauteur"
+}
