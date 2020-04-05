@@ -25,7 +25,7 @@ function SpeciesSprite({ moved }) {
           className="sprite"
         />
       ) : (
-        <Loader fixed />
+        <Loader fixed className="sprite" />
       )}
     </div>
   );

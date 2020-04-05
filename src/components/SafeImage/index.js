@@ -7,6 +7,7 @@ function SafeImage({
   images,
   alt,
   failedComponent: LoaderComponent,
+  className,
   ...props
 }) {
   const [index, setIndex] = useState(0);
@@ -21,17 +22,18 @@ function SafeImage({
     image.onload = () => setLoaded(true);
   }, [images, image, index]);
   if (index >= images.length) {
-    return <LoaderComponent fixed />;
+    return <LoaderComponent fixed className={className} />;
   }
   if (!loaded) {
-    return <LoaderComponent />;
+    return <LoaderComponent className={className} />;
   }
-  return <img {...props} src={image.src} alt={alt} />;
+  return <img {...props} className={className} src={image.src} alt={alt} />;
 }
 
 SafeImage.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
   failedComponent: PropTypes.any,
+  className: PropTypes.string,
   alt: PropTypes.string,
 };
 
