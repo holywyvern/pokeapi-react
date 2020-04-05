@@ -21,7 +21,7 @@ function SpeciesItemDisplay({ locales, selected, species, onSelect }) {
         className="button"
         role="menuitem"
         type="button"
-        to={`/${species.id}`}
+        to={`${process.env.PUBLIC_URL}/${species.id}`}
         tabIndex={0}
         onMouseEnter={handleHover}
         onTouchStart={handleHover}
