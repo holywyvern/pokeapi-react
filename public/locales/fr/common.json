@@ -1,5 +1,7 @@
 {
   "type": "Type",
   "weight": "Poids",
-  "height": "Hauteur"
+  "height": "Hauteur",
+  "abilities": "Talents",
+  "hidden": "(Talent cachée)"
 }

@@ -1,0 +1,18 @@
+.scroll-indicator-wrapper {
+  position: relative;
+}
+
+.scroll-indicator {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 12px;
+  color: red;
+  font-size: 32px;
+}
+
+@media screen and (max-width: 1100px) {
+  .scroll-indicator-wrapper.scroll-indicator-wrapper {
+    flex: initial;
+  }
+}

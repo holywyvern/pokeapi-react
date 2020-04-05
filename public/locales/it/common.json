@@ -1,5 +1,7 @@
 {
   "type": "Tipo",
   "weight": "Peso",
-  "height": "Altezza"
+  "height": "Altezza",
+  "abilities": "Abilità",
+  "hidden": "(Abilità nascosta)"
 }

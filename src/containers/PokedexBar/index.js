@@ -2,6 +2,8 @@ import React from "react";
 
 import cx from "classnames";
 
+import { Link } from "react-router-dom";
+
 import LanguageButtons from "@/components/LanguageButtons";
 
 import "./styles.scss";
@@ -15,7 +17,12 @@ function PokedexBar() {
   );
   return (
     <nav className={classes}>
-      <h1 className="title flex-grow padding-0 margin-0">Pokédex</h1>
+      <Link
+        to={`${process.env.PUBLIC_URL}/`}
+        className="title flex-grow padding-0 margin-0 pokédex-bar-title"
+      >
+        Pokédex
+      </Link>
       <LanguageButtons />
     </nav>
   );

@@ -9,11 +9,15 @@ import useActions from "@/hooks/useActions";
 
 import SpeciesContent from "@/containers/SpeciesContent";
 
+const pageSelector = ({ species, locales }) => ({
+  locales,
+  selectedSpecies: species.selectedSpecies,
+});
+
 function SpeciesLoader() {
   const { id } = useParams();
   const details = useActions(detailActions);
-  const selectedSpecies = useSelector((state) => state.species.selectedSpecies);
-  const locales = useSelector((state) => state.locales);
+  const { selectedSpecies, locales } = useSelector(pageSelector);
   const otherSelected = !selectedSpecies || selectedSpecies.id !== id;
   useEffect(() => {
     if (otherSelected) {

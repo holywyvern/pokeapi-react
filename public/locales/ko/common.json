@@ -1,5 +1,7 @@
 {
   "type": "타입",
   "weight": "무게",
-  "height": "신장"
+  "height": "신장",
+  "abilities": "특성",
+  "hidden": "숨겨진 특성"
 }

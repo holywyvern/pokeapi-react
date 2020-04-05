@@ -10,8 +10,10 @@ import Loader from "@/containers/Loader";
 
 import "./styles.scss";
 
+const pageSelector = (state) => state.species.selectedSpecies;
+
 function SpeciesSprite({ moved }) {
-  const selectedSpecies = useSelector((state) => state.species.selectedSpecies);
+  const selectedSpecies = useSelector(pageSelector);
   const classes = cx(
     "flex-row flex-grow vertical-center horizontal-center pokedex-image-wrapper",
     { moved }

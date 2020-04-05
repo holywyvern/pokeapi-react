@@ -1,5 +1,7 @@
 {
   "type": "タイプ",
   "weight": "重さ",
-  "height": "身長"
+  "height": "身長",
+  "abilities": "特性",
+  "hidden": "隠れ特性"
 }
