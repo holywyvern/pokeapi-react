@@ -23,8 +23,6 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
   return state;
 }
 
-const privateActions = {};
-
 export const actions = {
   select(id) {
     return async (dispatch) => {
