@@ -6,7 +6,7 @@ import "./styles.scss";
 function Type({ name, language }) {
   return (
     <img
-      src={`/types/${language}/${name}.png`}
+      src={`${process.env.PUBLIC_URL}/types/${language}/${name}.png`}
       alt={name}
       className="type-image"
     />
