@@ -60,7 +60,7 @@ async function getSpeciesDetails(species) {
   const images = [
     // The API doesn't give us a link to them, however, most of them are present.
     `${OFFICIAL_ARTWORK_BASE_URL}/${data.id}.png`,
-    `/sprites/official-artwork/${data.id}.png`,
+    `${process.env.PUBLIC_URL}/sprites/official-artwork/${data.id}.png`,
     data.sprites.front_default,
     // This URL is to fix some sprites than are not properly loaded at the API yet, like Zeraora
     `${BASE_CONTENT_URL}/sprites/pokemon/${data.id}.png`,
@@ -79,7 +79,7 @@ async function getSpecies({ url }) {
   const names = filterNames(species);
   const flavorText = getFlavorText(species);
   const genera = getGenera(species);
-  const icon = `/icons/${species.id}.png`;
+  const icon = `${process.env.PUBLIC_URL}/icons/${species.id}.png`;
   const details = await getSpeciesDetails(species);
   return {
     id: species.id,
