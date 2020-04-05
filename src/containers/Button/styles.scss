@@ -1,0 +1,26 @@
+.pokedex-button {
+  border: none;
+  border-radius: 50%;
+  background: none;
+  color: #333;
+  padding: 24px;
+  transition: all 0.3s ease;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    outline: 0;
+    background: #ff5d14;
+  }
+
+  &:disabled {
+    background: transparent;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &.compact {
+    padding: 12px;
+    border-radius: 4px;
+  }
+}

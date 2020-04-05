@@ -1,0 +1,26 @@
+.pokedex-image-wrapper {
+  transition: all 0.3s ease;
+
+  .sprite {
+    width: 100%;
+    max-width: 400px;
+    transform-origin: center;
+    transition: all 0.3s ease;
+  }
+
+  &.moved {
+    transform: translateX(-30px);
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .pokedex-image-wrapper {
+    .sprite {
+      max-width: 200px;
+    }
+
+    &.moved {
+      transform: translateY(-10px);
+    }
+  }
+}

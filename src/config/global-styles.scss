@@ -1,0 +1,98 @@
+html,
+body,
+#root {
+  font-family: "Libre Franklin", sans-serif;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#root {
+  background: linear-gradient(105deg, #ffe9ec, #ddd, #d4edf1);
+  overflow: hidden;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.align-end {
+  align-self: flex-end;
+}
+
+.flex-grow {
+  flex: 1;
+}
+
+.flex-row {
+  display: flex;
+
+  &.vertical-center {
+    align-items: center;
+  }
+
+  &.horizontal-center {
+    justify-content: center;
+  }
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+
+  &.vertical-center {
+    justify-content: center;
+  }
+
+  &.horizontal-center {
+    align-items: center;
+  }
+}
+
+.padding-0 {
+  padding: 0;
+}
+
+.padding-sm {
+  padding: 4px;
+}
+
+.padding-md {
+  padding: 8px;
+}
+
+.padding-lg {
+  padding: 12px;
+}
+
+.padding-xl {
+  padding: 16px;
+}
+
+.margin-0 {
+  margin: 4px;
+}
+
+.margin-sm {
+  margin: 4px;
+}
+
+.margin-md {
+  margin: 8px;
+}
+
+.margin-lg {
+  margin: 12px;
+}
+
+.margin-xl {
+  margin: 16px;
+}
