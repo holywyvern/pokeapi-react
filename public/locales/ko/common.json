@@ -3,5 +3,6 @@
   "weight": "무게",
   "height": "신장",
   "abilities": "특성",
-  "hidden": "숨겨진 특성"
+  "hidden": "숨겨진 특성",
+  "pokedex": "포켓몬 도감"
 }

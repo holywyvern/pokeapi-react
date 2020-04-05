@@ -3,5 +3,6 @@
   "weight": "Poids",
   "height": "Hauteur",
   "abilities": "Talents",
-  "hidden": "(Talent cachée)"
+  "hidden": "(Talent cachée)",
+  "pokedex": "Pokédex"
 }

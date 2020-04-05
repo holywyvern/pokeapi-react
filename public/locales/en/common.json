@@ -3,5 +3,6 @@
   "weight": "Weight",
   "height": "Height",
   "abilities": "Abilities",
-  "hidden": "(Hidden ability)"
+  "hidden": "(Hidden ability)",
+  "pokedex": "Pokédex"
 }

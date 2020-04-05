@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { useRouteMatch } from "react-router";
+import { useWindowSize } from "@react-hook/window-size";
 
 function processScroll(target) {
   const visible = target.scrollHeight > target.clientHeight;
@@ -11,10 +13,12 @@ function processScroll(target) {
 }
 
 export default function useScroll(effect, ref) {
+  const match = useRouteMatch();
+  const [width, height] = useWindowSize();
   useEffect(() => {
     if (ref.current) {
       ref.current.onscroll = (event) => effect(processScroll(event.target));
       effect(processScroll(ref.current));
     }
-  }, [effect, ref]);
+  }, [effect, ref, match, width, height]);
 }
