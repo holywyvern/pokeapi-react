@@ -13,7 +13,7 @@ import "./styles.scss";
 
 function ApplicationLayout({ children }) {
   const match = useRouteMatch({
-    path: "/",
+    path: `${process.env.PUBLIC_URL}/`,
     exact: true,
   });
   const classes = cx("pokedex-bg", "flex-grow", {

@@ -30,7 +30,7 @@ export const actions = {
         const species = await PokeApi.getDetails(id);
         dispatch(speciesActions.select(species));
       } catch (e) {
-        dispatch(replace("/error"));
+        dispatch(replace(`${process.env.PUBLIC_URL}/error`));
       }
     };
   },
