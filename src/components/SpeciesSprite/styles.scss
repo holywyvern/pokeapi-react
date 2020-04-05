@@ -5,6 +5,7 @@
     width: 100%;
     max-width: 400px;
     transform-origin: center;
+    transition: all 0.3s ease;
   }
 
   &.moved {
@@ -15,7 +16,7 @@
 @media screen and (max-width: 1100px) {
   .pokedex-image-wrapper {
     .sprite {
-      max-width: 250px;
+      max-width: 230px;
     }
 
     &.moved {
