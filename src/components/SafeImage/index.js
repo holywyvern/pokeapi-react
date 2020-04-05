@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import Loader from "@/containers/Loader";
@@ -10,14 +10,23 @@ function SafeImage({
   ...props
 }) {
   const [index, setIndex] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+  const image = useMemo(() => new Image(), []);
+  useEffect(() => {
+    image.src = images[index];
+    image.onerror = () => {
+      image.error = null;
+      setIndex(index + 1);
+    };
+    image.onload = () => setLoaded(true);
+  }, [images, image, index]);
   if (index >= images.length) {
+    return <LoaderComponent fixed />;
+  }
+  if (!loaded) {
     return <LoaderComponent />;
   }
-  const handleError = (error) => {
-    error.target.error = null;
-    setIndex(index + 1);
-  };
-  return <img {...props} onError={handleError} src={images[index]} alt={alt} />;
+  return <img {...props} src={image.src} alt={alt} />;
 }
 
 SafeImage.propTypes = {
